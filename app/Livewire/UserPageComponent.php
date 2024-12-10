@@ -37,7 +37,7 @@ class UserPageComponent extends Component
             $this->models = Food::all();
             $this->selectedCategoryId = null;
         }
-        $this->activeCart =false;
+        $this->activeCart = false;
     }
 
     public function addCart(Food $food)
@@ -67,6 +67,8 @@ class UserPageComponent extends Component
 
         if (isset($cart[$food->id])) {
             $cart[$food->id]['quantity']++;
+            $cart[$food->id]['price'] += $food->price;
+
         }
         session()->put('cart', $cart);
     }
@@ -77,8 +79,10 @@ class UserPageComponent extends Component
         if (isset($cart[$food->id])) {
             if ($cart[$food->id]['quantity'] > 0) {
                 $cart[$food->id]['quantity']--;
+                $cart[$food->id]['price'] -= $food->price;
+
             }
-            if($cart[$food->id]['quantity'] == 0){
+            if ($cart[$food->id]['quantity'] == 0) {
                 unset($cart[$food->id]);
                 session(['cart' => $cart]);
             }
@@ -87,13 +91,13 @@ class UserPageComponent extends Component
     }
     public function removeItem(Food $food)
     {
-        
+
         if (session()->has('cart')) {
             $cart = session('cart');
 
-            
+
             if (array_key_exists($food->id, $cart)) {
-                
+
                 unset($cart[$food->id]);
                 session(['cart' => $cart]);
             }

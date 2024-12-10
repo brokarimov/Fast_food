@@ -75,47 +75,85 @@
             <div class="row mt-5">
                 <div class="col-12 mt-5">
                     <h1 class="mt-5">Cart</h1>
-                    <table class="table table-striped table-bordered mt-2">
-                        <tbody>
-                            @if (session('cart'))
-                                @foreach (session('cart') as $id => $item)
-                                    <tr>
-                                        <td><img src="{{asset('storage/' . $item['image'])}}" width="100px" height="100px"
-                                                class="mx-2"></td>
-                                        <td>{{$item['name']}}</td>
-                                        <td>${{$item['price']}}</td>
-                                        <td>
-                                            <button wire:click="plus({{$item['food_id']}})" class="btn btn-outline-primary mx-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                                    class="bi bi-plus" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                                                </svg>
-                                            </button>
-                                            {{$item['quantity']}}
-                                            <button wire:click="minus({{$item['food_id']}})" class="btn btn-outline-danger mx-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                                    class="bi bi-dash" viewBox="0 0 16 16">
-                                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
-                                                </svg>
-                                            </button>
-                                            <div class="d-flex float-right">
-                                                <button wire:click="removeItem({{$item['food_id']}})" class="btn btn-outline-secondary">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
-                                                        <path
-                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
-                                                    </svg>
-                                                </button>
+                    <div class="row">
+                        <div class="col-8">
+                            <table class="table table-striped table-bordered mt-2 mb-2">
+                                <tbody>
+                                    @if (session('cart'))
+                                        @foreach (session('cart') as $id => $item)
+                                            <tr>
+                                                <td><img src="{{asset('storage/' . $item['image'])}}" width="100px" height="100px"
+                                                        class="mx-2"></td>
+                                                <td>{{$item['name']}}</td>
+                                                <td>${{$item['price']}}</td>
+                                                <td>
+                                                    <button wire:click="plus({{$item['food_id']}})"
+                                                        class="btn btn-outline-primary mx-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                                                        </svg>
+                                                    </button>
+                                                    {{$item['quantity']}}
+                                                    <button wire:click="minus({{$item['food_id']}})"
+                                                        class="btn btn-outline-danger mx-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+                                                        </svg>
+                                                    </button>
+                                                    <div class="d-flex float-right">
+                                                        <button wire:click="removeItem({{$item['food_id']}})"
+                                                            class="btn btn-outline-secondary">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                                fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                                                <path
+                                                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-4 mb-4">
+                            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="text-muted">Your cart</span>
+                            </h4>
+                            <ul class="list-group mb-3">
+                                @if (session('cart'))
+                                    @foreach (session('cart') as $id => $item)
+                                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                            <div>
+                                                <h6 class="my-0">{{$item['name']}}</h6>
+                                                <small class="text-muted">Quantity: {{$item['quantity']}}</small>
                                             </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @endif
-                        </tbody>
-                    </table>
+                                            <span class="text-muted">{{$item['price']}}</span>
+                                        </li>
+                                    @endforeach
+                                @endif
+
+
+
+
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span>Total (USD)</span>
+                                    <strong>${{ collect(session('cart'))->sum('price') }}</strong>
+                                </li>
+                            </ul>
+
+
+
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
