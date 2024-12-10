@@ -8,10 +8,12 @@ use Livewire\Component;
 
 class UserPageComponent extends Component
 {
+
     public $models;
     public $categories;
     public $categoriesSort;
     public $selectedCategoryId = null;
+    public $activeCart = false;
     public function mount()
     {
         $this->models = Food::all();
@@ -35,6 +37,77 @@ class UserPageComponent extends Component
             $this->models = Food::all();
             $this->selectedCategoryId = null;
         }
-
+        $this->activeCart =false;
     }
+
+    public function addCart(Food $food)
+    {
+        $cart = session()->get('cart', []);
+
+        if (isset($cart[$food->id])) {
+            $cart[$food->id]['quantity']++;
+        } else {
+            $cart[$food->id] = [
+                'food_id' => $food->id,
+                'name' => $food->name,
+                'image' => $food->image,
+                'price' => $food->price,
+                'quantity' => 1,
+            ];
+        }
+
+        session()->put('cart', $cart);
+        // dd(session('cart'));
+        // session()->forget('cart');
+    }
+
+    public function plus(Food $food)
+    {
+        $cart = session('cart');
+
+        if (isset($cart[$food->id])) {
+            $cart[$food->id]['quantity']++;
+        }
+        session()->put('cart', $cart);
+    }
+    public function minus(Food $food)
+    {
+        $cart = session('cart');
+
+        if (isset($cart[$food->id])) {
+            if ($cart[$food->id]['quantity'] > 0) {
+                $cart[$food->id]['quantity']--;
+            }
+            if($cart[$food->id]['quantity'] == 0){
+                unset($cart[$food->id]);
+                session(['cart' => $cart]);
+            }
+        }
+        session()->put('cart', $cart);
+    }
+    public function removeItem(Food $food)
+    {
+        
+        if (session()->has('cart')) {
+            $cart = session('cart');
+
+            
+            if (array_key_exists($food->id, $cart)) {
+                
+                unset($cart[$food->id]);
+                session(['cart' => $cart]);
+            }
+        }
+    }
+
+    public function toggleCart()
+    {
+        $this->activeCart = !$this->activeCart;
+    }
+    public function isInCart($foodId)
+    {
+        return session()->has('cart') && in_array($foodId, session('cart'));
+    }
+
+
 }

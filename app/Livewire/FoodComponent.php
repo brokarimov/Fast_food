@@ -135,4 +135,6 @@ class FoodComponent extends Component
 
         $this->reset(['nameEdit', 'priceEdit', 'imageEdit', 'category_idEdit', 'editFormFood']);
     }
+
+   
 }

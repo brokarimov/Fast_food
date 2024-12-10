@@ -1,5 +1,5 @@
 <div>
-    <h1>Post Page</h1>
+    <h1>Food Page</h1>
 
     <button type="button" class="btn btn-outline-primary" wire:click="{{$activeForm ? 'close' : 'open'}}">
         {{$activeForm ? 'Close' : 'Create'}}
@@ -59,9 +59,7 @@
                         <select wire:model="searchCategory_id" wire:change="searchColumps" class="form-control">
                             <option value="">Choose Category</option>
                             @foreach ($categories as $category)
-
                                 <option value="{{$category->id}}">{{$category->name}}</option>
-
                             @endforeach
                         </select>
                     </th>

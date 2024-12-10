@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Cart\CartAddComponent;
 use App\Livewire\CategoryComponent;
 use App\Livewire\FoodComponent;
 use App\Livewire\UserPageComponent;
