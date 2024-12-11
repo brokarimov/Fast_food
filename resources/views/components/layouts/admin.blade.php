@@ -18,8 +18,7 @@
     <link rel="stylesheet" href="{{asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/plugins/daterangepicker/daterangepicker.css')}}">
     <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.min.css')}}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
     @livewireStyles
 </head>
 
@@ -55,13 +54,38 @@
                         <li class="nav-item">
                             <a href="/category" class="nav-link" wire:navigate>
                                 <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>Category</p>
+                                <p>Categories</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/food" class="nav-link" wire:navigate>
                                 <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>Food</p>
+                                <p>Foods</p>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="/order" class="nav-link" wire:navigate>
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>Orders</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/department" class="nav-link" wire:navigate>
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>Departments</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/users" class="nav-link" wire:navigate>
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/employee" class="nav-link" wire:navigate>
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>Employees</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -95,12 +119,7 @@
     @livewireScripts
     <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v1.x.x/dist/livewire-sortable.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-        crossorigin="anonymous"></script>
+    
 
     <script src="{{asset('admin/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('admin/plugins/jquery-ui/jquery-ui.min.js')}}"></script>

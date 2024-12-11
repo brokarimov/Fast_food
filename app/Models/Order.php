@@ -13,8 +13,12 @@ class Order extends Model
         'status',
     ];
     
-    public function orterItems()
+    public function foods()
     {
         return $this->belongsToMany(Food::class, 'order_items', 'order_id', 'food_id');
+    }
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class, 'order_id');
     }
 }

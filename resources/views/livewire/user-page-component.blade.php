@@ -125,7 +125,16 @@
                         <div class="col-4 mb-4">
                             <h4 class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="text-muted">Your cart</span>
+                                <div class="d-flex float-right">
+                                    @if (!empty(session('cart')))
+                                        <button class="btn btn-outline-primary" wire:click="order">
+                                            Order
+                                        </button>
+                                    @endif
+
+                                </div>
                             </h4>
+
                             <ul class="list-group mb-3">
                                 @if (session('cart'))
                                     @foreach (session('cart') as $id => $item)
@@ -138,18 +147,11 @@
                                         </li>
                                     @endforeach
                                 @endif
-
-
-
-
                                 <li class="list-group-item d-flex justify-content-between">
                                     <span>Total (USD)</span>
                                     <strong>${{ collect(session('cart'))->sum('price') }}</strong>
                                 </li>
                             </ul>
-
-
-
                         </div>
                     </div>
 

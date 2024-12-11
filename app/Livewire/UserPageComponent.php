@@ -4,6 +4,9 @@ namespace App\Livewire;
 
 use App\Models\Category;
 use App\Models\Food;
+use App\Models\Order;
+use App\Models\OrderItem;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class UserPageComponent extends Component
@@ -113,5 +116,29 @@ class UserPageComponent extends Component
         return session()->has('cart') && in_array($foodId, session('cart'));
     }
 
+    public function order()
+    {
+        $cart = session('cart');
 
+        $queue = Order::where('date', Carbon::today()->format('Y-m-d'))->count() + 1;
+        $summ = collect(session('cart'))->sum('price');
+        $order = Order::create(
+            [
+                'date' => Carbon::today()->format('Y-m-d'),
+                'queue' => $queue,
+                'summ' => $summ,
+            ]
+        );
+        foreach ($cart as $id => $item) {
+            OrderItem::create(
+                [
+                    'order_id' => $order->id,
+                    'food_id' => $item['food_id'],
+                    'count' => $item['quantity'],
+                    'total_price' => $item['price'],
+                ]
+            );
+        }
+        session()->forget('cart');
+    }
 }

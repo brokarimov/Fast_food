@@ -8,8 +8,10 @@
             <div class="col-4">
                 <form wire:submit.prevent="save">
                     <label for="">Category Name</label>
-                    <input type="text" wire:model="name" placeholder="Name" class="form-control mt-2">
-
+                    <input type="text" wire:model.blur="name" placeholder="Name" class="form-control mt-2">
+                    @error('name')
+                        <span class="text-danger">{{$message}}</span><br>
+                    @enderror
                     <button type="submit" class="btn btn-primary mt-2">Create</button>
                 </form>
             </div>
@@ -60,7 +62,8 @@
                         <tr draggable="true" wire:sortable.item="{{ $model->id }}">
                             <td>{{$model->id}}</td>
                             <td>
-                                <input type="text" class="form-control" wire:model="nameEdit" placeholder="Name" value="{{$model->name}}">
+                                <input type="text" class="form-control" wire:model="nameEdit" placeholder="Name"
+                                    value="{{$model->name}}">
                             </td>
                             <td>{{$model->sort}}</td>
                             <td>

@@ -18,8 +18,13 @@ class Food extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function orterItems()
+    public function orders()
     {
-        return $this->belongsToMany(Food::class, 'order_items', 'food_id', 'order_id');
+        return $this->belongsToMany(Order::class, 'order_items', 'food_id', 'order_id');
+    }
+
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class, 'food_id');
     }
 }
