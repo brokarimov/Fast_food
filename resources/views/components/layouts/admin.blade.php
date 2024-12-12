@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/plugins/daterangepicker/daterangepicker.css')}}">
     <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.min.css')}}">
-    
+
     @livewireStyles
 </head>
 
@@ -44,7 +44,7 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">{{auth()->check() ? auth()->user()->name : 'Alexander Pierce'}}</a>
                     </div>
                 </div>
 
@@ -63,7 +63,7 @@
                                 <p>Foods</p>
                             </a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a href="/order" class="nav-link" wire:navigate>
                                 <i class="nav-icon far fa-calendar-alt"></i>
@@ -89,9 +89,22 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/attendance" class="nav-link" wire:navigate>
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>Attendance</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="/" class="nav-link">
                                 <i class="nav-icon far fa-calendar-alt"></i>
                                 <p>User Page</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/logout" class="nav-link">
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>Logout</p>
                             </a>
                         </li>
                     </ul>
@@ -119,7 +132,7 @@
     @livewireScripts
     <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v1.x.x/dist/livewire-sortable.js"></script>
 
-    
+
 
     <script src="{{asset('admin/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('admin/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
@@ -140,6 +153,9 @@
     <script src="{{asset('admin/dist/js/adminlte.js')}}"></script>
     <script src="{{asset('admin/dist/js/demo.js')}}"></script>
     <script src="{{asset('admin/dist/js/pages/dashboard.js')}}"></script>
+    <!-- Add this in your HTML head if it's missing -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

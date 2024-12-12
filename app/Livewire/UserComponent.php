@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use Hash;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -57,6 +58,7 @@ class UserComponent extends Component
 
             $validatedDate['image'] = $path;
         }
+        $validatedDate['password'] = Hash::make($validatedDate['password']);
         User::create($validatedDate);
         $this->name = '';
         $this->mount();

@@ -192,21 +192,16 @@
             Close
         </button>
         <ul>
-            <li>{{$showEmployee->id}}</li>
-            <li>{{$showEmployee->user->name}}</li>
-            <li>{{$showEmployee->department->name}}</li>
-            <li>{{$showEmployee->salary_type}}</li>
-            <li>${{$showEmployee->salary}}</li>
-            <li>{{$showEmployee->bonus}}</li>
-            <li>{{$showEmployee->monthly_time}}</li>
-            <li>{{$showEmployee->day_start}}</li>
-            <li>{{$showEmployee->day_end}}</li>
-            <li>{{$showEmployee->daily_time}}</li>
-
-
-
-
-
+            <li><label>ID:</label>  {{$showEmployee->id}}</li>
+            <li><label>Name:</label>  {{$showEmployee->user->name}}</li>
+            <li><label>Department:</label>  {{$showEmployee->department->name}}</li>
+            <li><label>Salary type:</label>  {{$showEmployee->salary_type}}</li>
+            <li><label>Salary:</label>  ${{$showEmployee->salary}}</li>
+            <li><label>Bonus:</label>  ${{$showEmployee->bonus}}</li>
+            <li><label>Monthly time:</label>  {{$showEmployee->monthly_time}}</li>
+            <li><label>Start work:</label>  {{$showEmployee->day_start}}</li>
+            <li><label>End work:</label>  {{$showEmployee->day_end}}</li>
+            <li><label>Daily work hours:</label>  {{$showEmployee->daily_time}}</li>
         </ul>
     @endif
 
