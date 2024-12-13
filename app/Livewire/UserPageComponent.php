@@ -17,8 +17,18 @@ class UserPageComponent extends Component
     public $categoriesSort;
     public $selectedCategoryId = null;
     public $activeCart = false;
+    public $orders1;
+    public $orders2;
+    public $orders3;
+    public $orders4;
+    public $activeClient = false;
+
     public function mount()
     {
+        $this->orders1 = Order::where('status', 1)->get();
+        $this->orders2 = Order::where('status', 2)->get();
+        $this->orders3 = Order::where('status', 3)->get();
+        $this->orders4 = Order::where('status', 4)->get();
         $this->models = Food::all();
         $this->categories = Category::orderBy('sort', 'asc')->get();
         $this->categoriesSort = Category::orderBy('sort', 'asc')->get();
@@ -41,6 +51,7 @@ class UserPageComponent extends Component
             $this->selectedCategoryId = null;
         }
         $this->activeCart = false;
+        $this->activeClient = false;
     }
 
     public function addCart(Food $food)
@@ -140,5 +151,12 @@ class UserPageComponent extends Component
             );
         }
         session()->forget('cart');
+    }
+    public function activeClient()
+    {
+        
+        $this->activeCart = false;
+        $this->activeClient = true;
+        $this->mount();
     }
 }

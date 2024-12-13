@@ -23,7 +23,11 @@ class LoginComponent extends Component
                     'start_time' => now(),
                 ]);
             }
-            return redirect()->intended('/category');
+            if (auth()->check() && auth()->user()->role == 'waiter' || auth()->user()->role == 'chef') {
+                return redirect()->intended('/order');
+            } else {
+                return redirect()->intended('/category');
+            }
         }
     }
     public function render()
@@ -37,7 +41,6 @@ class LoginComponent extends Component
             $startTime = Carbon::parse($user->start_time);
             $endTime = Carbon::parse(now());
             $difTime = $startTime->diffInHours($endTime);
-            $difTime = round($difTime);
             $user->update([
                 'end_time' => now(),
                 'time' => $difTime,

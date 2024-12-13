@@ -191,18 +191,65 @@
         <button type="button" class="btn btn-outline-primary" wire:click="closeShow">
             Close
         </button>
-        <ul>
-            <li><label>ID:</label>  {{$showEmployee->id}}</li>
-            <li><label>Name:</label>  {{$showEmployee->user->name}}</li>
-            <li><label>Department:</label>  {{$showEmployee->department->name}}</li>
-            <li><label>Salary type:</label>  {{$showEmployee->salary_type}}</li>
-            <li><label>Salary:</label>  ${{$showEmployee->salary}}</li>
-            <li><label>Bonus:</label>  ${{$showEmployee->bonus}}</li>
-            <li><label>Monthly time:</label>  {{$showEmployee->monthly_time}}</li>
-            <li><label>Start work:</label>  {{$showEmployee->day_start}}</li>
-            <li><label>End work:</label>  {{$showEmployee->day_end}}</li>
-            <li><label>Daily work hours:</label>  {{$showEmployee->daily_time}}</li>
-        </ul>
+        <div class="row">
+            <div class="col-6">
+                <table class="table table-bordered table-striped mt-2" style="border: 2px solid black;">
+                    <tr style="border: 2px solid black;">
+                        <td style="border: 2px solid black;"><label for="">Id</label></td>
+                        <td style="border: 2px solid black;">{{$showEmployee->id}}</td>
+
+                    </tr>
+                    <tr style="border: 2px solid black;">
+                        <td style="border: 2px solid black;"><label for="">Name</label></td>
+                        <td style="border: 2px solid black;">{{$showEmployee->user->name}}</td>
+
+                    </tr>
+                    <tr style="border: 2px solid black;">
+                        <td style="border: 2px solid black;"><label for="">Department</label></td>
+                        <td style="border: 2px solid black;">{{$showEmployee->department->name}}</td>
+
+                    </tr>
+                    <tr style="border: 2px solid black;">
+                        <td style="border: 2px solid black;"><label for="">Salary type</label></td>
+                        <td style="border: 2px solid black;">{{$showEmployee->salary_type}}</td>
+
+                    </tr>
+                    <tr style="border: 2px solid black;">
+                        <td style="border: 2px solid black;"><label for="">Salary</label></td>
+                        <td style="border: 2px solid black;">${{$showEmployee->salary}}</td>
+
+                    </tr>
+                    <tr style="border: 2px solid black;">
+                        <td style="border: 2px solid black;"><label for="">Bonus</label></td>
+                        <td style="border: 2px solid black;">${{$showEmployee->bonus}}</td>
+
+                    </tr>
+                    <tr style="border: 2px solid black;">
+                        <td style="border: 2px solid black;"><label for="">Monthly time</label></td>
+                        <td style="border: 2px solid black;">{{$showEmployee->monthly_time}}</td>
+
+                    </tr>
+                    <tr style="border: 2px solid black;">
+                        <td style="border: 2px solid black;"><label for="">Start work</label></td>
+                        <td style="border: 2px solid black;">{{$showEmployee->day_start}}</td>
+
+                    </tr>
+                    <tr style="border: 2px solid black;">
+                        <td style="border: 2px solid black;"><label for="">End work</label></td>
+                        <td style="border: 2px solid black;">{{$showEmployee->day_end}}</td>
+
+                    </tr>
+                    <tr style="border: 2px solid black;">
+                        <td style="border: 2px solid black;"><label for="">Daily work hours</label></td>
+                        <td style="border: 2px solid black;">{{$showEmployee->daily_time}}</td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+
     @endif
 
 

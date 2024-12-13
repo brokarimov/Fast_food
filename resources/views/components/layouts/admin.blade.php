@@ -51,49 +51,51 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <li class="nav-item">
-                            <a href="/category" class="nav-link" wire:navigate>
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>Categories</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/food" class="nav-link" wire:navigate>
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>Foods</p>
-                            </a>
-                        </li>
-
+                        @if (auth()->check() && auth()->user()->role == 'admin')
+                            <li class="nav-item">
+                                <a href="/category" class="nav-link" wire:navigate>
+                                    <i class="nav-icon far fa-calendar-alt"></i>
+                                    <p>Categories</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/food" class="nav-link" wire:navigate>
+                                    <i class="nav-icon far fa-calendar-alt"></i>
+                                    <p>Foods</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/department" class="nav-link" wire:navigate>
+                                    <i class="nav-icon far fa-calendar-alt"></i>
+                                    <p>Departments</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/users" class="nav-link" wire:navigate>
+                                    <i class="nav-icon far fa-calendar-alt"></i>
+                                    <p>Users</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/employee" class="nav-link" wire:navigate>
+                                    <i class="nav-icon far fa-calendar-alt"></i>
+                                    <p>Employees</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/attendance" class="nav-link" wire:navigate>
+                                    <i class="nav-icon far fa-calendar-alt"></i>
+                                    <p>Attendance</p>
+                                </a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a href="/order" class="nav-link" wire:navigate>
                                 <i class="nav-icon far fa-calendar-alt"></i>
                                 <p>Orders</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/department" class="nav-link" wire:navigate>
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>Departments</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/users" class="nav-link" wire:navigate>
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>Users</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/employee" class="nav-link" wire:navigate>
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>Employees</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/attendance" class="nav-link" wire:navigate>
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>Attendance</p>
-                            </a>
-                        </li>
+
 
                         <li class="nav-item">
                             <a href="/" class="nav-link">

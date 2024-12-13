@@ -30,4 +30,8 @@ class Employee extends Model
     {
         return $this->hasMany(Attendance::class, 'employee_id');
     }
+    public function waiterOrder()
+    {
+        return $this->hasMany(WaiterOrder::class, 'order_id');
+    }
 }
